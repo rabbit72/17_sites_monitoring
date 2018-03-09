@@ -45,7 +45,7 @@ def print_domain_status_expiration(status_expiration):
         message = 'No information'
     else:
         message = 'Need payment'
-    print('Domain status: {0}'.format(message))
+    print('Domain status expiration: {0}'.format(message))
 
 
 def test_urls(list_urls):
