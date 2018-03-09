@@ -11,6 +11,16 @@ Python 3 should be already installed. Then use pip (or pip3 if there is a confli
 ```bash
 $ pip install -r requirements.txt
 ```
+# Quick start
+
+```bash
+$ python3 check_sites_health.py <filepath_with_urls>
+```
+
+Running on Windows is similar.
+
+*(Possibly requires call of 'python' executive instead of just 'python3'.)*
+
 # Example
 
 ```bash
