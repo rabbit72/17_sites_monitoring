@@ -11,8 +11,7 @@ def load_urls4check(path_to_urls):
 
 def is_server_respond_with_200(url):
     try:
-        status_code = requests.get(url, timeout=5).status_code
-        return status_code == 200
+        return requests.get(url, timeout=5).ok
     except requests.RequestException:
         return False
 
