@@ -50,29 +50,34 @@ def print_domain_status_expiration(status_expiration):
     print('Domain status expiration: {0}'.format(message))
 
 
-def get_response_from_url_checks(url):
-    server_status = is_server_respond_with_200(url)
-    test_days_to_expiration = 31
-    status_expiration = is_expiration_date_more_days(
-        get_expiration_date(url),
-        test_days_to_expiration
-    )
-    return server_status, status_expiration
+def get_status_urls(urls):
+    for url in urls:
+        server_status = is_server_respond_with_200(url)
+        test_days_to_expiration = 31
+        status_expiration = is_expiration_date_more_days(
+            get_expiration_date(url),
+            test_days_to_expiration
+        )
+        yield url, server_status, status_expiration
+
+
+def print_status_url(status_url):
+    url, server_status, status_expiration = status_url
+    delimiter = '-' * 50
+    print(delimiter, url, sep='\n')
+    print_server_status(server_status)
+    print_domain_status_expiration(status_expiration)
 
 
 if __name__ == '__main__':
     try:
-        path_to_urls = sys.argv[1]
+        # path_to_urls = sys.argv[1]
+        path_to_urls = 'test/urls'
         urls4check = load_urls4check(path_to_urls)
-        delimiter = '-' * 50
-        for url in urls4check:
-            print(delimiter, url, sep='\n')
-            status_url = get_response_from_url_checks(url)
-            server_status, status_expiration = status_url
-            print_server_status(server_status)
-            print_domain_status_expiration(status_expiration)
+        status_urls = get_status_urls(urls4check)
+        for status_url in status_urls:
+            print_status_url(status_url)
     except FileNotFoundError:
         exit('File not found. Check the path to file')
     except IndexError:
         exit('No directory path. Try again entering the path')
-
