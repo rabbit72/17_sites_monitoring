@@ -71,8 +71,7 @@ def print_status_url(status_url):
 
 if __name__ == '__main__':
     try:
-        # path_to_urls = sys.argv[1]
-        path_to_urls = 'test/urls'
+        path_to_urls = sys.argv[1]
         urls4check = load_urls4check(path_to_urls)
         status_urls = get_status_urls(urls4check)
         for status_url in status_urls:
