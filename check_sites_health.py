@@ -69,7 +69,7 @@ if __name__ == '__main__':
         path_to_urls = sys.argv[1]
         urls4check = load_urls4check(path_to_urls)
         test_urls(urls4check)
-    except FileNotFoundError as text_error:
-        exit(text_error)
+    except FileNotFoundError:
+        exit('File not found. Check the path to file')
     except IndexError:
         exit('No directory path. Try again entering the path')
