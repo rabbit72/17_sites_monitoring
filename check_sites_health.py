@@ -6,8 +6,7 @@ import datetime
 
 def load_urls4check(path_to_urls):
     with open(path_to_urls, 'r', encoding='utf8') as file_with_urls:
-        list_urls = file_with_urls.readlines()
-        return list(map(lambda x: x.rstrip(), list_urls))
+        return file_with_urls.read().splitlines()
 
 
 def is_server_respond_with_200(url):
