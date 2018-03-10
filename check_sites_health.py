@@ -25,11 +25,11 @@ def get_expiration_date(domain_name):
     return expiration_date
 
 
-def is_expiration_date_more_month(expiration_date):
+def is_expiration_date_more_days(expiration_date, test_days_to_expiration):
     if expiration_date is None:
         return None
     remaining_days = expiration_date - datetime.datetime.now()
-    return remaining_days > datetime.timedelta(days=31)
+    return remaining_days > datetime.timedelta(days=test_days_to_expiration)
 
 
 def print_server_status(server_status):
@@ -54,7 +54,11 @@ def test_urls(list_urls):
             print(delimiter, url, sep='\n')
             print_server_status(is_server_respond_with_200(url))
             expiration_date = get_expiration_date(url)
-            status_expiration = is_expiration_date_more_month(expiration_date)
+            test_days_to_expiration = 31
+            status_expiration = is_expiration_date_more_days(
+                expiration_date,
+                test_days_to_expiration
+            )
             print_domain_status_expiration(status_expiration)
         except whois.parser.PywhoisError:
             print('No information about domain')
