@@ -48,9 +48,9 @@ def print_domain_status_expiration(status_expiration):
 
 
 def test_urls(list_urls):
+    delimiter = '-' * 50
     for url in list_urls:
         try:
-            delimiter = '-' * 50
             print(delimiter, url, sep='\n')
             print_server_status(is_server_respond_with_200(url))
             expiration_date = get_expiration_date(url)
