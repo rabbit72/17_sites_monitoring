@@ -59,7 +59,6 @@ No information about domain
 1. ```Domain status expiration: OK``` - domain's expiration date is more than 1 month
 1. ```Domain status expiration: Need payment``` - domain's expiration date is more than 1 month
 1. ```Domain status expiration: No information``` - expiration date unknown
-1. ```No information about domain```
 
 # Project Goals
 
