@@ -9,7 +9,7 @@ def load_urls4check(path_to_urls):
         return file_with_urls.read().splitlines()
 
 
-def is_server_respond_with_200(url):
+def is_server_status_code_less_400(url):
     try:
         return requests.get(url, timeout=5).ok
     except requests.RequestException:
@@ -51,7 +51,7 @@ def print_domain_status_expiration(status_expiration):
 
 def get_status_urls(urls):
     for url in urls:
-        server_status = is_server_respond_with_200(url)
+        server_status = is_server_status_code_less_400(url)
         test_days_to_expiration = 31
         status_expiration = is_expiration_date_more_days(
             get_expiration_date(url),
