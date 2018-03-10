@@ -23,6 +23,8 @@ Running on Windows is similar.
 
 # Example
 
+Use [this list urls](https://www.dropbox.com/s/gza2mhx5v7tzahg/urls?dl=0) for script test.
+
 ```bash
 $ python3 check_sites_health.py test/urls 
 --------------------------------------------------
